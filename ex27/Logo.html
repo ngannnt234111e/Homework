@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logo</title>
+    <style>
+        /* Removed CSS background-image styling and simplified */
+        .header-container {
+            display: flex;
+            height: 100%;
+            position: relative;
+        }
+        
+        .logo-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.8);
+            white-space: nowrap;
+            z-index: 10;
+            background: rgba(255,255,255,0.7);
+            padding: 5px 15px;
+            border-radius: 3px;
+        }
+        
+        .bottom-images {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .bottom-image {
+            flex: 1;
+            height: 80px;
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-text">THE COLORADO EXPERIENCE</div>
+    
+    <!-- Using img elements with src instead of CSS background-image -->
+    <div class="bottom-images">
+        <img src="ex27/images/LOGO.JPG" alt="Mountain landscape 1" class="bottom-image">
+        <img src="ex27/images/LOGO.JPG" alt="Mountain landscape 2" class="bottom-image">
+    </div>
+</body>
+</html>
