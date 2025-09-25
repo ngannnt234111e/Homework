@@ -1,0 +1,23 @@
+/* Background styles using import technique */
+body {
+  background-image: url("../ke/hinh-anh-giang-sinh-cute.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* Reduced overlay opacity to show Christmas scene more clearly */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: -1;
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christmas Home Page</title>
+    
+    <!-- Using external CSS with import technique -->
+    <link rel="stylesheet" href="background.css"
+</head>
+<body>
+    <!-- Adding hidden YouTube iframe for autoplay music -->
+    <iframe 
+        width="1" 
+        height="1" 
+        src="https://www.youtube.com/embed/eQ34DSTjsLQ?autoplay=1&loop=1&playlist=eQ34DSTjsLQ&controls=0&mute=0" 
+        style="position: fixed; top: -100px; left: -100px; opacity: 0;" 
+        allow="autoplay; encrypted-media">
+    </iframe>
+
+    <div class="container">
+        <h1><i class="fas fa-snowflake"></i> Welcome Home <i class="fas fa-snowflake"></i></h1>
+        <div class="welcome-text">
+            <i class="fas fa-music music-note"></i>
+            <p>Merry Christmas & Happy New Year!</p>
+            <i class="fas fa-music music-note"></i>
+        </div>
+        <p><i class="fas fa-gift"></i> Enjoy the festive season with beautiful music <i class="fas fa-gift"></i></p>
+    </div>
+    
+    <script>
+        // Add some interactive snow effect
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.innerHTML = '❄';
+            snowflake.style.position = 'fixed';
+            snowflake.style.top = '-10px';
+            snowflake.style.left = Math.random() * window.innerWidth + 'px';
+            snowflake.style.fontSize = Math.random() * 20 + 10 + 'px';
+            snowflake.style.color = 'white';
+            snowflake.style.pointerEvents = 'none';
+            snowflake.style.zIndex = '1000';
+            snowflake.style.opacity = Math.random();
+            
+            document.body.appendChild(snowflake);
+            
+            const fallDuration = Math.random() * 3000 + 2000;
+            snowflake.animate([
+                { transform: 'translateY(-10px) rotate(0deg)' },
+                { transform: `translateY(${window.innerHeight + 10}px) rotate(360deg)` }
+            ], {
+                duration: fallDuration,
+                easing: 'linear'
+            }).onfinish = () => snowflake.remove();
+        }
+        
+        // Create snowflakes every 300ms
+        setInterval(createSnowflake, 300);
+        
+        console.log("[v0] Christmas home page loaded with autoplay music and snow effect");
+    </script>
+</body>
+</html>
