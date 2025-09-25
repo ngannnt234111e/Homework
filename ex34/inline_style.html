@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 34: Inline Style</title>
+    <!-- Removed external CSS link and added internal CSS -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            border: 2px solid #4169e1;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #e6e6fa;
+            padding: 15px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .header h1 {
+            margin: 0 0 10px 0;
+            font-size: 24px;
+            color: black;
+        }
+
+        .style-properties {
+            margin: 0;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .vietnam-title {
+            color: #aaaaaa;
+            font-size: 24px;
+            margin: 20px;
+        }
+
+        .geography {
+            font-family: Verdana, sans-serif;
+            font-size: 14pt;
+            margin: 20px;
+        }
+
+        .geography h2 {
+            color: black;
+            font-size: 16pt;
+            margin-bottom: 10px;
+        }
+
+        .topography {
+            text-align: left;
+            font-size: 14pt;
+            background-color: #cccccc;
+            padding: 15px;
+            margin: 20px;
+        }
+
+        .topography h2 {
+            color: #0000ff;
+            margin-bottom: 10px;
+        }
+
+        .people {
+            margin: 20px;
+            margin-left: 2cm;
+            background-image: url("images/camel.gif");
+            background-repeat: repeat-x;
+            background-position: top;
+            padding: 20px;
+            padding-top: 40px;
+        }
+
+        .people h2 {
+            color: #ff00ff;
+            margin-bottom: 10px;
+        }
+
+        .religion {
+            margin: 20px;
+            margin-right: 1cm;
+            margin-left: 1cm;
+            text-align: justify;
+            background-color: #cccccc;
+            padding: 15px;
+        }
+
+        .religion h2 {
+            color: #00ffff;
+            text-decoration: underline;
+            margin-bottom: 10px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding: 10px;
+            font-size: 12px;
+            color: #666;
+            border-top: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Inline Styles</h1>
+            <p class="style-properties"><strong>Style Properties:</strong> text, font, background, margin, padding</p>
+        </header>
+        
+        <main>
+            <h1 class="vietnam-title">Vietnam Information</h1>
+            
+            <section class="geography">
+                <h2>Geography</h2>
+                <p>Inland area: 330,991 km²</p>
+                <p>Continental shelf area: 1,000,000 km²</p>
+                <p>Population: 78,774,000 inhabitants (in 1999)</p>
+                <p>Coastline: 3,260 km</p>
+                <p>Inland coordinates: Latitude 102°10' - 109°30' East</p>
+                <p>Longitude 08°30' - 23°22' North</p>
+            </section>
+            
+            <section class="topography">
+                <h2>Topography</h2>
+                <p>Three quarters of Vietnam's territory consists of mountainous regions. Vietnam has two major deltas (the Red River delta and the Mekong delta) and for distinctive mountainous zones each having its own unique features.</p>
+            </section>
+            
+            <section class="people">
+                <h2>People</h2>
+                <p>The Vietnamese population exceeds 78.7 million divided in 54 ethnic groups. The largest group is the Viet, or Kinh, accounting for 80% of the whole population concentrating in the plain areas while minorities occupy the highlands and the mountains.</p>
+            </section>
+            
+            <section class="religion">
+                <h2>Religion</h2>
+                <p>There is no official religion in Vietnam, but Buddhism is relatively popular. Some of the Catholic churches and Buddhist pagodas are interesting tourist attractions. There are religions more specific to the southern regions of the country such as the Caodai sect, the Hoa Hao sect, and Islam. Most Vietnamese worship their ancestors.</p>
+            </section>
+        </main>
+        
+        <footer class="copyright">
+            <p>Copyright © BenThanh Tourist</p>
+        </footer>
+    </div>
+</body>
+</html>
