@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Online Classifieds Search Form</title>
+<style>
+  body{ margin:0; background:#cfeeee; font-family: Arial, Helvetica, sans-serif; }
+  .wrap{ width:760px; margin:18px auto; background:#dff5f4; border:3px solid #3f6ed8; padding:16px 20px 28px; }
+  h1{ margin:0 0 8px; color:#c41414; font-size:32px; font-weight:700; }
+  hr{ border:0; border-top:2px solid #9fb0b0; margin:8px 0 14px; }
+  .sec{ font-weight:700; margin:14px 0 6px; }
+  label{ cursor:pointer; margin-right:20px; }
+  input[type="text"]{ padding:6px 8px; border:2px solid #b7c3d0; background:#fff; }
+  .datefield{ width:160px; }
+  .keywords{ width:100%; }
+  .actions{ margin-top:18px; display:flex; gap:70px; justify-content:center; align-items:center; }
+  .iconbtn{ background:transparent; border:0; cursor:pointer; padding:0; }
+  .iconbtn img{ display:block; }
+</style>
+<script>
+  function doSearch(){ alert("Search simulation"); }
+  function doHelp(){
+    const w = window.open("", "_blank", "width=420,height=260");
+    if(w){
+      w.document.write("<!doctype html><title>Help</title><div style='font-family:Arial;padding:16px'><h2>Help</h2><p>Fill in sections 1–4, then click <b>Search</b>. Use <b>Cancel</b> to clear the form.</p></div>");
+    }
+  }
+  function doCancel(){ document.getElementById("frm").reset(); }
+
+  // Định dạng và kiểm tra dd/mm/yy
+  function formatDateInput(el){
+    let v = el.value.replace(/\D/g,"").slice(0,6);  // chỉ số
+    if(v.length >= 5){
+      v = v.replace(/(\d{2})(\d{2})(\d{0,2})/, "$1/$2/$3");
+    }else if(v.length >= 3){
+      v = v.replace(/(\d{2})(\d{0,2})/, "$1/$2");
+    }
+    el.value = v;
+  }
+  function validDDMMYY(v){
+    const m = /^(\d{2})\/(\d{2})\/(\d{2})$/.exec(v);
+    if(!m) return false;
+    const d = +m[1], mo = +m[2], y = 2000 + (+m[3]);
+    if(mo < 1 || mo > 12) return false;
+    const max = new Date(y, mo, 0).getDate();
+    return d >= 1 && d <= max;
+  }
+  window.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".datefield").forEach(inp => {
+      inp.setAttribute("inputmode","numeric");
+      inp.setAttribute("maxlength","8");              // dd/mm/yy
+      inp.setAttribute("placeholder","dd/mm/yy");
+      inp.addEventListener("input", () => formatDateInput(inp));
+      inp.addEventListener("blur", () => {
+        if(inp.value === "") { inp.setCustomValidity(""); return; }
+        if(validDDMMYY(inp.value)) inp.setCustomValidity("");
+        else inp.setCustomValidity("Vui lòng nhập ngày hợp lệ (dd/mm/yy).");
+      });
+    });
+  });
+</script>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Online Classifieds Search Form</h1>
+    <hr>
+
+    <form id="frm">
+      <div class="sec">1) Search for a classified in the following sections:</div>
+      <div>
+        <label><input type="radio" name="sec" value="Employment"> Employment</label>
+        <label><input type="radio" name="sec" value="Personal"> Personal</label><br>
+        <label><input type="radio" name="sec" value="For Sale"> For Sale</label>
+        <label><input type="radio" name="sec" value="Miscellaneous"> Miscellaneous</label><br>
+        <label><input type="radio" name="sec" value="Housing"> Housing</label>
+        <label><input type="radio" name="sec" value="All of the above"> All of the above</label>
+      </div>
+
+      <div class="sec">2) Search the following publications:</div>
+      <div>
+        <label><input type="checkbox" name="pub" value="Midwest times"> Midwest times</label>
+        <label><input type="checkbox" name="pub" value="Modern News"> Modern News</label>
+        <label><input type="checkbox" name="pub" value="Employment Today"> Employment Today</label><br>
+        <label><input type="checkbox" name="pub" value="Great Lakes Classifieds"> Great Lakes Classifieds</label>
+        <label><input type="checkbox" name="pub" value="Middleton Daily"> Middleton Daily</label>
+        <label><input type="checkbox" name="pub" value="Cashtown Daily News"> Cashtown Daily News</label>
+      </div>
+
+      <div class="sec">3) From to:</div>
+      <div>
+        <label>From <input class="datefield" type="text" name="from"></label>
+        <label>to <input class="datefield" type="text" name="to"></label>
+      </div>
+
+      <div class="sec">4) Enter a few keywords to describe the classified.</div>
+      <input class="keywords" type="text" name="keywords">
+
+      <div class="sec">5) Click one of the options below:</div>
+      <div class="actions">
+        <button type="button" class="iconbtn" onclick="doSearch()" aria-label="Search">
+          <img src="../images/Search.gif" alt="Search">
+        </button>
+        <button type="button" class="iconbtn" onclick="doHelp()" aria-label="Help">
+          <img src="../images/Help.gif" alt="Help">
+        </button>
+        <button type="button" class="iconbtn" onclick="doCancel()" aria-label="Cancel">
+          <img src="../images/Cancel.gif" alt="Cancel">
+        </button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
