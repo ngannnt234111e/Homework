@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Register - Thanh Ngan</title>
+<style>
+  body{
+    margin:0;
+    background:#b9cef3;
+  }
+  .frame{
+    width:780px;
+    margin:28px auto;
+    background:#b9cef3;
+    border:3px solid #4d66d1;
+    padding:18px 24px 32px;
+  }
+
+  .logo-wrap{ text-align:center; margin:0 auto 18px; }
+  .logo-img{ height:78px; display:inline-block; }
+
+  .title{ text-align:center; font-size:28px; font-weight:bold; margin:8px 0 4px; }
+  .subtitle{ text-align:center; margin-bottom:18px; }
+
+  hr{ border:none; border-top:2px solid #7e8ec9; margin:14px 0; }
+  table{ width:auto; border-collapse:collapse; margin:0 auto; }
+  td{ padding:6px 4px; vertical-align:middle; }
+  .label{ width:130px; }
+
+  input[type=text], select, textarea{
+    width:200px; padding:4px; border:2px solid #b9c3e6; background:#fff;
+  }
+  .w-long{ width:420px; }
+  .w-short{ width:70px; }
+  textarea{ width:420px; height:120px; resize:vertical; }
+
+  .btns{ text-align:center; margin-top:12px; }
+  .btn{
+    padding:6px 18px; border:2px solid #8ca0d6; background:#e7eefb;
+    cursor:pointer; border-radius:4px; margin:0 6px; font-weight:bold;
+  }
+  label{ cursor:pointer; }
+</style>
+<script>
+  function onRegister(){ alert("Registration"); }
+</script>
+</head>
+<body>
+
+  <div class="frame">
+    <div class="logo-wrap">
+      <img src="images/Jackson.gif" alt="Jackson Electronics" class="logo-img">
+    </div>
+
+    <div class="title">Registration Form</div>
+    <div class="subtitle">Register your Jackson Electronics product here</div>
+
+    <form id="regForm">
+      <table>
+        <tr>
+          <td class="label"><label for="firstName">First Name:</label></td>
+          <td><input type="text" id="firstName" name="firstName"></td>
+          <td class="label"><label for="lastName">Last Name:</label></td>
+          <td><input type="text" id="lastName" name="lastName"></td>
+        </tr>
+        <tr>
+          <td class="label"><label for="addr1">Address #1:</label></td>
+          <td colspan="3"><input type="text" id="addr1" name="addr1" class="w-long"></td>
+        </tr>
+        <tr>
+          <td class="label"><label for="addr2">Address #2:</label></td>
+          <td colspan="3"><input type="text" id="addr2" name="addr2" class="w-long"></td>
+        </tr>
+        <tr>
+          <td class="label"><label for="city">City:</label></td>
+          <td><input type="text" id="city" name="city"></td>
+          <td class="label">
+            <label for="state">State:</label>
+            <input type="text" id="state" name="state" class="w-short">
+            <label for="zip">Zip:</label>
+            <input type="text" id="zip" name="zip" class="w-short">
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="label"><label for="country">Country:</label></td>
+          <td colspan="3">
+            <select id="country" name="country" style="width:260px">
+              <option>United States</option>
+              <option>Canada</option>
+              <option>United Kingdom</option>
+              <option>Australia</option>
+            </select>
+          </td>
+        </tr>
+      </table>
+
+      <hr>
+
+      <table>
+        <tr>
+          <td class="label"><label for="product">Product:</label></td>
+          <td>
+            <select id="product" name="product" style="width:260px">
+              <option>ScanMaster</option>
+              <option>PrintPro</option>
+              <option>PhotoSuite</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td class="label"><label for="datePurchased">Date Purchased:</label></td>
+          <td><input type="text" id="datePurchased" name="datePurchased"></td>
+        </tr>
+        <tr>
+          <td class="label"><label for="serial">Serial #:</label></td>
+          <td><input type="text" id="serial" name="serial"></td>
+        </tr>
+        <tr>
+          <td class="label">Used for:</td>
+          <td>
+            <label for="useHome"><input type="radio" id="useHome" name="usefor" value="Home"> Home</label><br>
+            <label for="useBusiness"><input type="radio" id="useBusiness" name="usefor" value="Business"> Business</label><br>
+            <label for="useGov"><input type="radio" id="useGov" name="usefor" value="Government"> Government</label>
+          </td>
+          <td></td>
+          <td>
+            <label for="useEdu"><input type="radio" id="useEdu" name="usefor" value="Educational Institution"> Educational Institution</label><br>
+            <label for="useOther"><input type="radio" id="useOther" name="usefor" value="Other"> Other</label>
+          </td>
+        </tr>
+        <tr>
+          <td class="label">System (check all that apply):</td>
+          <td>
+            <label for="sysWin"><input type="checkbox" id="sysWin" name="system" value="Windows"> Windows</label><br>
+            <label for="sysMac"><input type="checkbox" id="sysMac" name="system" value="Macintosh"> Macintosh</label>
+          </td>
+          <td></td>
+          <td>
+            <label for="sysUnix"><input type="checkbox" id="sysUnix" name="system" value="UNIX"> UNIX</label><br>
+            <label for="sysOther"><input type="checkbox" id="sysOther" name="system" value="Other"> Other</label>
+          </td>
+        </tr>
+      </table>
+
+      <hr>
+
+      <table>
+        <tr>
+          <td class="label"><label for="comments">Comments?:</label></td>
+          <td colspan="3"><textarea id="comments" name="comments"></textarea></td>
+        </tr>
+      </table>
+
+      <div class="btns">
+        <button type="button" class="btn" onclick="onRegister()">Click to register</button>
+        <button type="reset" class="btn">Click to cancel</button>
+      </div>
+    </form>
+  </div>
+
+</body>
+</html>
