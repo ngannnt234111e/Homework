@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercise 51 - Newborn Registration</title>
+  <style>
+    body {
+      font-family: "Times New Roman", serif;
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+      margin: 0;
+    }
+
+    .container {
+      width: 700px;
+      background-color: #336666; 
+      border: 2px solid blue; 
+      color: white;
+      padding: 10px 30px 30px;
+    }
+
+    header {
+      text-align: center;
+      background-color: #336666; 
+      padding: 10px 0;
+    }
+
+    header img {
+      display: block;
+      margin: 0 auto;
+    }
+
+    h2 {
+      text-align: center;
+      color: white;
+      font-size: 28px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    form {
+      color: white;
+      font-size: 16px;
+    }
+
+    label {
+      display: inline-block;
+      width: 200px;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    select {
+      width: 180px;
+      padding: 3px;
+      margin-bottom: 8px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      color: #000;
+    }
+
+    .inline {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    .physician-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .physician-row label {
+      width: 250px;
+      line-height: 1.3;
+    }
+
+    select[multiple] {
+      width: 220px;
+      height: 90px;
+    }
+
+    
+    .button-row {
+      display: flex;
+      justify-content: center; 
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    input[type="submit"],
+    input[type="reset"] {
+      padding: 5px 16px;
+      border: 1px solid #888;
+      color: black;
+      border-radius: 2px;
+      cursor: pointer;
+      box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgba(0,0,0,0.3);
+      font-family: "Times New Roman", serif;
+    }
+
+    input[type="submit"]:active,
+    input[type="reset"]:active {
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.4);
+      transform: translateY(1px);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img src="./Logo.gif" alt="St. Mary's of Northland Pines logo">
+    </header>
+
+    <h2>Newborn Registration</h2>
+
+    <form>
+      <div>
+        <label>Date:</label>
+        <input type="text" placeholder="mm/dd/yy">
+      </div>
+
+      <div>
+        <label>1) Infant's first name:</label>
+        <input type="text" class="inline">
+        <span>Last:</span>
+        <input type="text">
+      </div>
+
+      <div>
+        <label>2) Medical Record #:</label>
+        <input type="text">
+      </div>
+
+      <div>
+        <label>3) Date of birth:</label>
+        <input type="text" placeholder="mm/dd/yy">
+      </div>
+
+      <div>
+        <label>4) Birth weight:</label>
+        <input type="text">
+      </div>
+
+      <div>
+        <label>5) APGAR score:</label>
+        <input type="text">
+      </div>
+
+      <div>
+        <label>6) Mother's first name:</label>
+        <input type="text" class="inline">
+        <span>Last:</span>
+        <input type="text">
+      </div>
+
+      <div>
+        <label>7) Father's first name:</label>
+        <input type="text" class="inline">
+        <span>Last:</span>
+        <input type="text">
+      </div>
+
+      <div class="physician-row">
+        <label>8) Physician (check all that apply):</label>
+        <select name="physician" size="4" multiple>
+          <option>Dr. Warren Albert</option>
+          <option>Dr. Maria Alvarez</option>
+          <option>Dr. Karen Brinkman</option>
+          <option>Dr. Micheal Kerry</option>
+        </select>
+      </div>
+
+      <div class="button-row">
+        <input type="submit" value="Register">
+        <input type="reset" value="Cancel">
+      </div>
+    </form>
+  </div>
+</body>
+</html>
