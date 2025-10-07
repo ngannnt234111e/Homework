@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>PHAM VI ANH</title>
+        <script>
+            function change_color(value)
+            {
+                mydiv = document.getElementById('mydiv')
+                mydiv.setAttribute('style',"width: 100%; height: 50px; background-color:" +value)
+            }
+            function change_image(value)
+            {
+                author_img = document.getElementById('author_img')
+                author_img.setAttribute('src', 'images/' +value)
+            }
+        </script>
+    </head>
+    <body>
+        <form>
+            <select name="color" id="color" onchange="change_color(this.value)">
+                <option value="blue">Xanh le</option>
+                <option value="red">Do choet</option>
+                <option value="yellow">Vang khe</option>
+            </select>
+            <div style="width: 100%; height: 50px; background-color: pink", id="mydiv">
+
+            </div>
+            <select name="author" id="author" onchange="change_image(this.value)">
+                <option value="LVB1.jpg">mr.A</option>
+                <option value="LVB2.jpg">mr.B</option>
+                <option value="LVB3.jpg">mr.C</option>
+                <option value="LVB4.jpg">mr.D</option>
+            </select>
+            <div>
+                <img id='author_img' src = 'images/LVB1.jpg'/>
+            </div>
+        </form>
+    </body>
+</html>
