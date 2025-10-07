@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Exercise 50 - Travel Expense Report</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    /* ✅ Toàn trang và khung chính cùng 1 màu xanh nhạt */
+    body {
+      margin: 0;
+      font-family: "Times New Roman", Times, serif;
+      background-color: #ccffff;
+      display: flex;
+      justify-content: center;
+      padding: 24px 12px;
+      color: #000;
+    }
+
+    .page-wrapper {
+      width: min(720px, 100%);
+      background-color: #ccffff;   /* cùng màu với body */
+      border: 2px solid blue;      /* viền xanh kiểu bài mẫu */
+      padding: 16px 18px 24px;
+    }
+
+    /* ✅ Header: logo ở giữa, tiêu đề bên trái, có hr */
+    header {
+      background-color: #ccffff;   /* đồng nhất màu */
+      text-align: center;
+      padding: 6px 0 4px;
+    }
+    header .logo {
+      display: block;
+      margin: 0 auto 6px;
+      max-width: 100%;
+      height: auto;
+      width: 360px;                /* chỉnh nếu ảnh quá lớn/nhỏ */
+    }
+    header h2 {
+      text-align: left;
+      margin: 8px 0 6px;
+      font-size: 22px;
+      font-weight: bold;
+    }
+    header hr {
+      border: none;
+      border-top: 2px solid #555;
+      margin: 0;
+    }
+
+    /* ✅ Form giữ nguyên nhưng nền trong suốt / cùng màu */
+    form {
+      padding: 12px 0 0;
+      background: transparent;     /* bỏ gradient cũ */
+    }
+
+    .form-row { margin-bottom: 14px; }
+    .form-row label {
+      display: inline-block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid #8aa5c6;
+      font-size: 15px;
+      background: #f6f9ff;
+    }
+
+    textarea { min-height: 110px; resize: vertical; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      background: #fff;
+    }
+    th, td {
+      border: 1px solid #94b0d3;
+      padding: 8px 10px;
+      text-align: left;
+      font-size: 15px;
+    }
+    thead th { background: #cfe0f7; font-weight: 700; text-align: center; }
+    .amount-cell { width: 130px; }
+    .amount-cell input { text-align: right; }
+    .checkbox-cell { width: 120px; text-align: center; }
+
+    .radio-group { display: flex; gap: 18px; align-items: center; margin-top: 6px; }
+    .button-bar { display: flex; gap: 12px; justify-content: flex-start; margin-top: 14px; }
+
+    button {
+      padding: 8px 18px; border-radius: 4px; border: 1px solid #c1ccda;
+      background: #f1f5f9; cursor: pointer; font-weight: 600;
+    }
+    .submit-btn { background: #c9782c; color: #fff; border: none; }
+
+    .form-note { margin-top: 14px; font-style: italic; font-size: 14px; }
+    @media (max-width: 560px) { .grid-2 { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <main class="page-wrapper">
+    <header>
+      <img src="../ex50/ex50/DeLong.jpg" alt="DeLong Enterprises logo" class="logo" />
+      <h2>Travel Expense Report</h2>
+      <hr>
+    </header>
+
+    <form id="travelExpenseForm" onsubmit="return submitReport();">
+      <div class="form-row">
+        <label for="firstName">1) First Name</label>
+        <div class="grid-2">
+          <input id="firstName" name="firstName" type="text" required />
+          <div>
+            <label for="lastName">Last Name</label>
+            <input id="lastName" name="lastName" type="text" required />
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="ssn">2) Social Security Number</label>
+        <input id="ssn" name="ssn" type="text" placeholder="xxx-xx-xxxx" />
+      </div>
+
+      <div class="form-row">
+        <label for="department">3) Department</label>
+        <select id="department" name="department">
+          <option value="Accounting">Accounting</option>
+          <option value="Finance">Finance</option>
+          <option value="Human Resources">Human Resources</option>
+          <option value="Marketing">Marketing</option>
+          <option value="Operations">Operations</option>
+          <option value="Sales">Sales</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="tripPurpose">4) Describe the purpose of your trip</label>
+        <textarea id="tripPurpose" name="tripPurpose"
+          placeholder="Include the destination, client, and any supporting notes"></textarea>
+      </div>
+
+      <div class="form-row">
+        <label>5) Itemize your travel expenses</label>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Description</th>
+              <th>Category</th>
+              <th class="amount-cell">Amount</th>
+              <th class="checkbox-cell">Reimbursable</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="date" name="expenseDate1" /></td>
+              <td><input type="text" name="expenseDesc1" /></td>
+              <td>
+                <select name="expenseCategory1">
+                  <option value="Meal">Meal</option>
+                  <option value="Lodging">Lodging</option>
+                  <option value="Transportation">Transportation</option>
+                  <option value="Supplies">Supplies</option>
+                  <option value="Other">Other</option>
+                </select>
+              </td>
+              <td class="amount-cell"><input type="number" min="0" step="0.01" name="expenseAmount1" /></td>
+              <td class="checkbox-cell"><input type="checkbox" name="expenseReimbursable1" /></td>
+            </tr>
+            <tr>
+              <td><input type="date" name="expenseDate2" /></td>
+              <td><input type="text" name="expenseDesc2" /></td>
+              <td>
+                <select name="expenseCategory2">
+                  <option value="Meal">Meal</option>
+                  <option value="Lodging">Lodging</option>
+                  <option value="Transportation">Transportation</option>
+                  <option value="Supplies">Supplies</option>
+                  <option value="Other">Other</option>
+                </select>
+              </td>
+              <td class="amount-cell"><input type="number" min="0" step="0.01" name="expenseAmount2" /></td>
+              <td class="checkbox-cell"><input type="checkbox" name="expenseReimbursable2" /></td>
+            </tr>
+            <tr>
+              <td><input type="date" name="expenseDate3" /></td>
+              <td><input type="text" name="expenseDesc3" /></td>
+              <td>
+                <select name="expenseCategory3">
+                  <option value="Meal">Meal</option>
+                  <option value="Lodging">Lodging</option>
+                  <option value="Transportation">Transportation</option>
+                  <option value="Supplies">Supplies</option>
+                  <option value="Other">Other</option>
+                </select>
+              </td>
+              <td class="amount-cell"><input type="number" min="0" step="0.01" name="expenseAmount3" /></td>
+              <td class="checkbox-cell"><input type="checkbox" name="expenseReimbursable3" /></td>
+            </tr>
+            <tr>
+              <td><input type="date" name="expenseDate4" /></td>
+              <td><input type="text" name="expenseDesc4" /></td>
+              <td>
+                <select name="expenseCategory4">
+                  <option value="Meal">Meal</option>
+                  <option value="Lodging">Lodging</option>
+                  <option value="Transportation">Transportation</option>
+                  <option value="Supplies">Supplies</option>
+                  <option value="Other">Other</option>
+                </select>
+              </td>
+              <td class="amount-cell"><input type="number" min="0" step="0.01" name="expenseAmount4" /></td>
+              <td class="checkbox-cell"><input type="checkbox" name="expenseReimbursable4" /></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="form-row">
+        <label>6) Have you submitted your receipts?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="receipts" value="yes" /> Yes</label>
+          <label><input type="radio" name="receipts" value="no" /> No</label>
+        </div>
+      </div>
+
+      <div class="button-bar">
+        <button class="submit-btn" type="submit">Submit travel expense</button>
+        <button type="button" onclick="resetReport();">Reset form</button>
+      </div>
+
+      <p class="form-note">Questions? Contact Debbie Larson in Accounting (ext. 2150).</p>
+    </form>
+  </main>
+
+  <script>
+    function submitReport() {
+      alert("Travel expense report submitted successfully.");
+      return false; // chặn submit thật
+    }
+    function resetReport() {
+      const form = document.getElementById("travelExpenseForm");
+      form.reset();
+      document.getElementById("firstName").focus();
+    }
+  </script>
+</body>
+</html>
