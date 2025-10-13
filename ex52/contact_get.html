@@ -1,0 +1,82 @@
+<html>
+	<head>
+		<title>
+			Contact - Thanh Ngan - k234111402
+		</title>
+        <script type="text/javascript">
+            function confirmSubmit()
+            {
+                return confirm('Are u sure?')
+            }
+        </script>
+	</head>
+	<body>
+        <form name="my_form_contact" action="new_page.html" method="get" target="_blank"onsubmit=confirmSubmit()>
+            <table>
+                <tr>
+                    <td><b>Contact the editorial office</b></td>
+                </tr>
+
+                <tr>
+                <td><label for="fullname">Full Name:</label></td>
+                </tr>
+
+                <tr>
+                <td colspan="2"><input type="text" name="fullname" id="fullname" required/></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label for="email">Email:</label>
+                    </td>
+                    <td>
+                        <label for="sendto">Send to:</label>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <input type="email" name="email" id="email" required/>
+                    </td>
+                    <td>
+                        <select name="sendto" id="sendto">
+                            <option value="Editorial Boar">Editorial Board</option>
+                            <option value="News Department">News Department</option>
+                            <option value="World Board">World Board</option>
+                            <option value="Business Department">Business Department</option>
+                        </select>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <label for="title">Title:</label>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <input type="text" name="title" id="title" required/>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <label for="content">Content:</label>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td colspan="2">
+                        <textarea name="content" id="content" rows="10" cols="50" required></textarea>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td><button type="submit" style="background-color: coral;">Send</button></td>
+                </tr>
+            </table>
+        </form>
+		
+	</body>
+</html>

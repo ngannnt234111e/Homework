@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<title>
+			New Page from Contact - Thanh Ngan - k234111402
+		</title>
+        <script type="text/javascript">
+            function displayFormData()
+            {
+                const params = new URLSearchParams(window.location.search);
+
+                document.getElementById('fullname').innerText = params.get('fullname')
+                document.getElementById('email').innerText = params.get('email')
+                document.getElementById('sendto').innerText = params.get('sendto')
+                document.getElementById('title').innerText = params.get('title')
+                document.getElementById('content').innerText = params.get('content')
+            }
+        </script>
+	</head>
+	<body onload="displayFormData()">
+		<table>
+            <tr>
+                <td><b>Full Name:</b></td>
+                <td id="fullname">
+
+                </td>
+            </tr>
+            <tr>
+                <td><b>Email:</b></td>
+                <td id="email"></td>
+            </tr>
+            <tr>
+                <td><b>Send to:</b></td>
+                <td id="sendto"></td>
+            </tr>
+            <tr>
+                <td><b>Title:</b></td>
+                <td id="title"></td>
+            </tr>
+            <tr>
+                <td><b>Content:</b></td>
+                <td id="content"></td>
+            </tr>
+        </table>
+	</body>
+</html>
