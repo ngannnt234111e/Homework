@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Result – Product GET - Thanh Ngan - k234111402</title>
+
+<style>
+  body{font-family:Arial,Helvetica,sans-serif;margin:22px}
+  table{width:100%;border-collapse:collapse}
+  th,td{border:1px solid #ddd;padding:10px;font-size:18px}
+  th{background:#f5f5f5}
+  .right{text-align:right}
+  .total{font-weight:700}
+</style>
+
+<script type="text/javascript">
+  function render(){
+    const p = new URLSearchParams(location.search);
+    const rows = [];
+    let grand = 0, sumQty = 0;
+
+    for(let i=1;i<=3;i++){
+      const part  = p.get('part'+i);
+      const name  = p.get('name'+i);
+      const price = parseFloat(p.get('price'+i) || '0');
+      const qty   = parseInt(p.get('qty'+i) || '0', 10);
+      const note  = p.get('note'+i) || '';
+      const sub   = price * qty;
+      grand += sub; sumQty += qty;
+
+      rows.push(`<tr>
+        <td>${part}</td>
+        <td>${name}</td>
+        <td class="right">${price.toFixed(2)} $</td>
+        <td class="right">${qty}</td>
+        <td>${note}</td>
+        <td class="right">${sub.toFixed(2)} $</td>
+      </tr>`);
+    }
+
+    document.getElementById('tbody').innerHTML = rows.join('');
+    document.getElementById('grand').textContent = grand.toFixed(2) + ' $';
+    document.getElementById('qtysum').textContent = sumQty;
+
+    // Tổng Qty do trang 1 gửi kèm (ô Total)
+    const totalQtyFromForm = p.get('totalQty') || '';
+    document.getElementById('qtyform').textContent = totalQtyFromForm;
+  }
+</script>
+</head>
+<body onload="render()">
+  <h2>Order summary (from GET)</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Part Number</th>
+        <th>Description</th>
+        <th class="right">Price</th>
+        <th class="right">Qty</th>
+        <th>Item table</th>
+        <th class="right">Item total</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3"><b>Sum of Qty (calculated here):</b></td>
+        <td id="qtysum" class="right"></td>
+        <td colspan="2">Form Total Qty (sent by GET): <span id="qtyform"></span></td>
+      </tr>
+      <tr class="total">
+        <td colspan="5" class="right">Calculated Total Amount:</td>
+        <td id="grand" class="right"></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <p style="margin-top:10px"><a href="products_get.html">← Back</a></p>
+</body>
+</html>
