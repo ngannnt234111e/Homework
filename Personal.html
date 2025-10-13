@@ -1,0 +1,44 @@
+<html>
+	<head>
+		<title>
+			My form - PHAM VI ANH K234111423
+		</title>
+        <script>
+            function update_name()
+            {
+                myform.fullname.value = myform.firstname.value+' '+
+                myform.middlename.value+' '+myform.lastname.value
+                fullname_td = document.getElementById('fullname_td')
+                fullname_td.innerText = myform.fullname.value
+            }
+        </script>
+	</head>
+	<body>
+		<form name="myform">
+            <table>
+                <tr>
+                    <td>First Name:</td>
+                    <td><input type="text" name="firstname" id="firstname" oninput="update_name()"/></td>
+                </tr>
+                <tr>
+                    <td>Middle Name:</td>
+                    <td><input type="text" name="middlename" id="middlename" oninput="update_name()"/></td>
+                </tr>
+                <tr>
+                    <td>Last Name:</td>
+                    <td><input type="text" name="lastname" id="lastname" oninput="update_name()"></td>
+                </tr>
+                <tr>
+                    <td>Full Name:</td>
+                    <td><input type='text' name="fullname" id="fullname"></td>
+                </tr>
+                <tr>
+                    <td>Full Name:</td>
+                    <td id="fullname_td">
+
+                    </td>
+                </tr>
+            </table>
+        </form>
+	</body>
+</html>
