@@ -1,0 +1,89 @@
+<html>
+	<head>
+		<title>
+			Math Function - ThanhNgan K234111402
+		</title>
+        <script src="../js/math.js">
+
+        </script>
+        <script type="text/javascript">
+            function btn_max()
+            {
+                let a = my_form.input_a.value;
+                let b = my_form.input_b.value;
+                let c = my_form.input_c.value;
+
+                let result = calc_max(a,b,c) 
+                td_result.innerText = result
+            }
+            function btn_min()
+            {
+                a = my_form.input_a.value;
+                b = my_form.input_b.value;
+                c = my_form.input_c.value;
+
+                result = calc_min(a,b,c)
+                td_result.innerText = result
+            }
+            function btn_sin_a()
+            {
+                a = my_form.input_a.value
+
+                result = calc_sin_a(a)
+                td_result.innerText = result
+            }
+            function btn_cos_a()
+            {
+                a = my_form.input_a.value
+
+                result = calc_cos_a(a)
+                td_result.innerText = result
+            }
+            function btn_a_b()
+            {
+                a = my_form.input_a.value
+                b = my_form.input_b.value
+
+                result = calc_a_b(a,b)
+                td_result.innerText = result
+            }
+        </script>
+	</head>
+	<body>
+        <form name="my_form">
+		<table border="1">
+            <tr>
+                <td>a:</td>
+                <td>
+                    <input type="number" name="input_a" id="input_a"/>
+                </td>
+            </tr>
+            <tr>
+                <td>b:</td>
+                <td>
+                    <input type="number" name="input_b" id="input_b"/>
+                </td>
+            </tr>
+            <tr>
+                <td>c:</td>
+                <td>
+                    <input type="number" name="input_c" id="input_c"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Result:</td>
+                <td id="td_result"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button type="button" onclick="btn_max()">MAX</button>
+                    <button type="button" onclick="btn_min()">MIN</button>
+                    <button type="button" onclick="btn_sin_a()">sin(a)</button>
+                    <button type="button" onclick="btn_cos_a()">cos(a)</button>
+                    <button type="button" onclick="btn_a_b()">a<sup>b</sup></button>
+                </td>
+            </tr>
+        </table>
+        </form>
+	</body>
+</html>
