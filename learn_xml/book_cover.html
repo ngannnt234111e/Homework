@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>Books Cover - Thanh Ngan</title>
+    </head>
+    <body>
+        <table border="1">
+            <caption>Book Cover Images</caption>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Year</th>
+                    <th>Cover</th>
+                    <th>Action:</th>
+                </tr>
+            </thead>
+            <tbody id="book_tbody">
+            </tbody>
+        </table>
+        <script type="text/javascript">
+            var xhr =new XMLHttpRequest();
+            xhr.open("GET","datasets/books_cover.xml",true);
+            xhr.send();
+            xhr.onreadystatechange=function()
+            {
+                if (xhr.readyState==4 && xhr.status==200)
+                {
+                    //handling when loading data successfully
+                    var xmlDoc = xhr.responseXML;
+                    var books=xmlDoc.getElementsByTagName("book");
+                    for(i=0;i<books.length;i++)
+                    {
+                        book=books[i]
+                        row=document.createElement('tr')
+                        td_title=document.createElement('td')
+                        td_author=document.createElement('td')
+                        td_year=document.createElement('td')
+                        td_cover=document.createElement('td')
+                        td_action=document.createElement('td')
+
+                        cover_url=book.getElementsByTagName("cover")[0].childNodes[0].nodeValue;
+                        td_cover.innerHTML="<img src='"+cover_url+"' width='100'/>"
+                        td_action.innerHTML="<button onclick='alert(\""+cover_url+"\")'>Show Cover URL</button>"
+
+                        row.appendChild(td_title)
+                        row.appendChild(td_author)
+                        row.appendChild(td_year)
+                        row.appendChild(td_cover)
+                        row.appendChild(td_action)
+
+                        document.getElementById('book_tbody').appendChild(row)
+
+                    }
+                    title=xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
+                    author=xmlDoc.getElementsByTagName("author")[0].childNodes[0].nodeValue;
+                    year=xmlDoc.getElementsByTagName("year")[0].childNodes[0].nodeValue;
+                    td_title.innerText=title
+                    td_author.innerText=author
+                    td_year.innerText=year
+                }
+                else
+                {
+                    //handling when data can't be loaded
+                }
+            }
+        </script>
+    </body>
+</html>
